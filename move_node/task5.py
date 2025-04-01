@@ -2,9 +2,9 @@
 
 class Node(object):
     """class Node"""
-    def __init__(self, data):
+    def __init__(self, data, next = None):
         self.data = data
-        self.next = None
+        self.next = next
 
 class Context(object):
     """class Contex"""
@@ -12,8 +12,10 @@ class Context(object):
         self.source = source
         self.dest = dest
 
-def move_node(source, dest):
+def move_node(source: "Node", dest: "Node"):
     """func move node"""
-    # Your code goes here.
-    # Remember to return the context.
+    if source is None:
+        raise ValueError
+    dest = Node(source.data,dest)
+    source = Node(source.next.data,source.next.next)
     return Context(source, dest)
